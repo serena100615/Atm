@@ -6,11 +6,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    public final static int REQUEST_LOGIN= 1;
     boolean logon = false;
 
     @Override
@@ -20,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(!logon){
             Intent intent = new Intent(this,LoginActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
+            startActivityForResult(intent,REQUEST_LOGIN);
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,6 +38,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onActivityResult (int requestCode, int resultCode , Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode==REQUEST_LOGIN){
+            if(resultCode==RESULT_OK){
+            String uid = data.getStringExtra("LOGIN_USERID");
+            String pawd = data.getStringExtra("LOGIN_PASSWD");
+            Log.d("RESULT",uid+"/"+pawd);
+            }else{
+            finish();
+            }
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
