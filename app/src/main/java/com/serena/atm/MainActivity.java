@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     public final static int REQUEST_LOGIN= 1;
+    public final static int REQUEST_INFO= 2;
     boolean logon = false;
 
     @Override
@@ -32,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this,UserInfoActivity.class);
+                startActivityForResult(intent ,REQUEST_INFO);
             }
         });
     }
@@ -41,16 +43,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult (int requestCode, int resultCode , Intent data){
         super.onActivityResult(requestCode,resultCode,data);
+        switch (requestCode) {
+            case REQUEST_LOGIN:
+                break;
+            case REQUEST_INFO:
+                if (resultCode == RESULT_OK) {
+                    String na = data.getStringExtra("INFO_NAME");
+                    String pho = data.getStringExtra("INFO_PHONE");
+                    Toast.makeText(this, na + pho, Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+
         if(requestCode==REQUEST_LOGIN){
             if(resultCode==RESULT_OK){
             String uid = data.getStringExtra("LOGIN_USERID");
             String pawd = data.getStringExtra("LOGIN_PASSWD");
-            Log.d("RESULT",uid+"/"+pawd);
+                Toast.makeText(this,"LogingID:"+uid,Toast.LENGTH_LONG).show();
             }else{
             finish();
             }
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
