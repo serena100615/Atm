@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,UserInfoActivity.class);
                 startActivityForResult(intent ,REQUEST_INFO);
+
             }
         });
     }
@@ -60,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
             String uid = data.getStringExtra("LOGIN_USERID");
             String pawd = data.getStringExtra("LOGIN_PASSWD");
                 Toast.makeText(this,"LogingID:"+uid,Toast.LENGTH_LONG).show();
+                getSharedPreferences("atm",MODE_PRIVATE)
+                        .edit()
+                        .putString("USERID",uid)
+                        .apply();
             }else{
             finish();
             }
