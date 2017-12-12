@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
                     String na = data.getStringExtra("INFO_NAME");
                     String pho = data.getStringExtra("INFO_PHONE");
                     Toast.makeText(this, na + pho, Toast.LENGTH_LONG).show();
+                    getSharedPreferences("atm",MODE_PRIVATE)
+                            .edit()
+                            .putString("NAME",na)
+                            .putString("PHONE",pho)
+                            .apply();
                 }
                 break;
         }
