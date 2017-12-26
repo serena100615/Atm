@@ -1,5 +1,6 @@
 package com.serena.atm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 
 public class UserInfoActivity extends AppCompatActivity {
     private static final String TAG = UserInfoActivity.class.getSimpleName();
+    public final static int REQUEST_ADDRESS= 5;
     private EditText name;
     private EditText phone;
     private Spinner ages;
@@ -46,5 +48,9 @@ public class UserInfoActivity extends AppCompatActivity {
         getIntent().putExtra("INFO_PHONE",pho);
         setResult(RESULT_OK,getIntent());
         finish();
+    }
+    public void address(View view){
+        Intent intent = new Intent(this,AddrActivity.class);
+        startActivityForResult(intent ,REQUEST_ADDRESS);
     }
 }

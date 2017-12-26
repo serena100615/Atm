@@ -58,14 +58,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="124dp"
         android:onClick="ok"
         android:text="OK"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.282" />
 
     <TextView
         android:id="@+id/textView5"
@@ -87,5 +88,16 @@
         android:layout_marginTop="18dp"
         app:layout_constraintLeft_toRightOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="79dp"
+        android:onClick="address"
+        android:text="地址"
+        app:layout_constraintLeft_toRightOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </android.support.constraint.ConstraintLayout>
