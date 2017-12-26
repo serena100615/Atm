@@ -22,7 +22,11 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".UserInfoActivity" />
         <activity android:name=".Ch8Activity" />
-        <activity android:name=".AddrActivity"></activity>
+        <activity android:name=".AddrActivity" />
+        <activity android:name=".CityActivity" />
+        <activity android:name=".AreaActivity" />
+        <activity android:name=".Area1Activity" />
+        <activity android:name=".Area2Activity"></activity>
     </application>
 
 </manifest>
