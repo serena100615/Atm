@@ -57,14 +57,16 @@ public class CityActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         if(requestCode==REQUEST_AREA_N){
             if(resultCode==RESULT_OK){
-
+                String a = data.getStringExtra("AREA_B");
+                Toast.makeText(this,"新北市"+a,Toast.LENGTH_LONG).show();
             }else{
                 finish();
             }
         }
         if(requestCode==REQUEST_AREA_T){
             if(resultCode==RESULT_OK){
-
+                String a = data.getStringExtra("AREA_C");
+                Toast.makeText(this,"台北市"+a,Toast.LENGTH_LONG).show();
             }else{
                 finish();
             }
